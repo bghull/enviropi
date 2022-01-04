@@ -1,0 +1,414 @@
+[
+    {
+        "id": "fc573125.276e2",
+        "type": "mqtt in",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "topic": "sensorpi/medium/T",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e1da3ccb.0ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "5c6c79a8.ab93e8"
+            ]
+        ]
+    },
+    {
+        "id": "ca73260a.aa44e8",
+        "type": "mqtt in",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "topic": "sensorpi/medium/pH",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e1da3ccb.0ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "befbb7bf.efb338"
+            ]
+        ]
+    },
+    {
+        "id": "d4d50c14.bfc9d",
+        "type": "mqtt in",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "topic": "sensorpi/medium/TDS",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e1da3ccb.0ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "b78ae959.00d7c8"
+            ]
+        ]
+    },
+    {
+        "id": "b45732a8.f58c1",
+        "type": "mqtt in",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "topic": "sensorpi/air",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "e1da3ccb.0ed",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 190,
+        "y": 300,
+        "wires": [
+            [
+                "5cde44b2.96fe5c"
+            ]
+        ]
+    },
+    {
+        "id": "13f3df5c.715241",
+        "type": "join",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "2",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 790,
+        "y": 220,
+        "wires": [
+            [
+                "8c1c335.86f8cd"
+            ]
+        ]
+    },
+    {
+        "id": "befbb7bf.efb338",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT pH",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "pH",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round($number(msg.payload), 1)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "b78ae959.00d7c8",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT TDS",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "TDS",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(msg.payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "5cde44b2.96fe5c",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$map($split(msg.payload, \",\"), $number)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "aa69f0fe.5282",
+                "83901a7e.79ac78",
+                "df04882d.318668"
+            ]
+        ]
+    },
+    {
+        "id": "5c6c79a8.ab93e8",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT T_med",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "T_med",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round($number(msg.payload))",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 100,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "e9157ee5.6fa73",
+        "type": "link out",
+        "z": "d4f2afd9.b40b",
+        "name": "MQTT to DB out",
+        "links": [
+            "d2223496.2b2818"
+        ],
+        "x": 1075,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8c1c335.86f8cd",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "readings",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "params",
+                "pt": "msg",
+                "to": "{\t   \"$time\": $millis(),\t   \"$pH\": msg.payload.pH,\t   \"$TDS\": msg.payload.TDS,\t   \"$T_med\": msg.payload.T_med,\t   \"$T_air\": msg.payload.T_air,\t   \"$RH\": msg.payload.RH,\t   \"$VPD\": msg.payload.VPD\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 220,
+        "wires": [
+            [
+                "e9157ee5.6fa73"
+            ]
+        ]
+    },
+    {
+        "id": "aa69f0fe.5282",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT T_air",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "T_air",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round((msg.payload[1] * (9/5)) + 32)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "83901a7e.79ac78",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT RH",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "RH",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round(msg.payload[0], 1)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 300,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "df04882d.318668",
+        "type": "change",
+        "z": "d4f2afd9.b40b",
+        "name": "Format MQTT VPD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "VPD",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round((610.78 * $power(\t   2.718,\t   msg.payload[1] / (msg.payload[1] + 238.3) * 17.2694) / 1000\t) * (1 - (msg.payload[0] / 100)), 1)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 340,
+        "wires": [
+            [
+                "13f3df5c.715241"
+            ]
+        ]
+    },
+    {
+        "id": "e1da3ccb.0ed",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

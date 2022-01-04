@@ -1,0 +1,1233 @@
+[
+    {
+        "id": "e5963a4e.3cc7c8",
+        "type": "ui_chart",
+        "z": "e3265d27.008ee",
+        "name": "Air Temperature",
+        "group": "229b7b5.301e384",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "20",
+        "ymax": "100",
+        "removeOlder": "8",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#fa8072",
+            "#87ceeb",
+            "#ffd700",
+            "#72d2df",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 580,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e259c8dd.1b2ab8",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "229b7b5.301e384",
+        "order": 9,
+        "width": 2,
+        "height": 1,
+        "name": "VPD Last Value",
+        "label": "VPD",
+        "format": "{{msg.payload[0].VPD}}",
+        "layout": "col-center",
+        "x": 360,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "33c4e929.cbb766",
+        "type": "ui_template",
+        "z": "e3265d27.008ee",
+        "group": "229b7b5.301e384",
+        "name": "Text colors",
+        "order": 3,
+        "width": 1,
+        "height": 1,
+        "format": "<style>\n\n    .nr-dashboard-widget-Medium {\n        color:#5BC87B !important;\n    }\n    .nr-dashboard-widget-Temp {\n        color:salmon !important;\n    }\n    .nr-dashboard-widget-pH {\n        color:#C65AA6 !important;\n    }\n    .nr-dashboard-widget-TDS {\n        color:#72D2DF !important;\n    }\n    .nr-dashboard-widget-RH {\n        color:skyblue !important;\n    }\n    .nr-dashboard-widget-VPD {\n        color:gold !important;\n    }\n</style>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b572c03b.4b4c6",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "229b7b5.301e384",
+        "order": 4,
+        "width": 2,
+        "height": 1,
+        "name": "Air Temp Last Value",
+        "label": "Temp",
+        "format": "{{msg.payload[0].T_air}}°",
+        "layout": "col-center",
+        "x": 380,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "c40cf84d.988178",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "229b7b5.301e384",
+        "order": 5,
+        "width": 2,
+        "height": 1,
+        "name": "RH Last Value",
+        "label": "RH",
+        "format": "{{msg.payload[0].RH}}%",
+        "layout": "col-center",
+        "x": 360,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "85c039a9.f7b5f8",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "bb465471.f59478",
+        "order": 7,
+        "width": 2,
+        "height": 1,
+        "name": "pH Last Value",
+        "label": "pH",
+        "format": "{{msg.payload[0].pH}}",
+        "layout": "col-center",
+        "x": 360,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "cd934769.0d36f8",
+        "type": "ui_chart",
+        "z": "e3265d27.008ee",
+        "name": "VPD",
+        "group": "229b7b5.301e384",
+        "order": 7,
+        "width": 6,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for Ruuvi...",
+        "dot": false,
+        "ymin": "0.5",
+        "ymax": "1.5",
+        "removeOlder": "8",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ffd700",
+            "#87ceeb",
+            "#ffd700",
+            "#72d2df",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 550,
+        "y": 1120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "82522b7a.a471a8",
+        "type": "ui_chart",
+        "z": "e3265d27.008ee",
+        "name": "pH",
+        "group": "bb465471.f59478",
+        "order": 5,
+        "width": 6,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for pH...",
+        "dot": false,
+        "ymin": "5.5",
+        "ymax": "6.5",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#c65aa6",
+            "#5bc87b",
+            "#ff8f2e",
+            "#72d2df",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 550,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44c1ef27.63fd9",
+        "type": "ui_led",
+        "z": "e3265d27.008ee",
+        "order": 1,
+        "group": "c6a15bd1.abdaf8",
+        "width": 2,
+        "height": 1,
+        "label": "°F",
+        "labelPlacement": "left",
+        "labelAlignment": "right",
+        "colorForValue": [
+            {
+                "color": "#00ff00",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": true,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "°F",
+        "x": 690,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4a1e5d42.876b54",
+        "type": "ui_led",
+        "z": "e3265d27.008ee",
+        "order": 2,
+        "group": "c6a15bd1.abdaf8",
+        "width": 2,
+        "height": 1,
+        "label": "pH",
+        "labelPlacement": "left",
+        "labelAlignment": "right",
+        "colorForValue": [
+            {
+                "color": "#00ff00",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "pH",
+        "x": 690,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "6ce2cb46.5c5854",
+        "type": "ui_led",
+        "z": "e3265d27.008ee",
+        "order": 4,
+        "group": "c6a15bd1.abdaf8",
+        "width": 2,
+        "height": 1,
+        "label": "VPD",
+        "labelPlacement": "left",
+        "labelAlignment": "right",
+        "colorForValue": [
+            {
+                "color": "#00ff00",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "VPD",
+        "x": 690,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "decf264b.359b58",
+        "type": "ui_led",
+        "z": "e3265d27.008ee",
+        "order": 3,
+        "group": "c6a15bd1.abdaf8",
+        "width": 2,
+        "height": 1,
+        "label": "TDS",
+        "labelPlacement": "left",
+        "labelAlignment": "right",
+        "colorForValue": [
+            {
+                "color": "#00ff00",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "TDS",
+        "x": 690,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b6842ccf.0651c8",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "bb465471.f59478",
+        "order": 11,
+        "width": 2,
+        "height": 1,
+        "name": "TDS Last Value",
+        "label": "TDS",
+        "format": "{{msg.payload[0].TDS}}",
+        "layout": "col-center",
+        "x": 360,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "26a674af.cca234",
+        "type": "ui_chart",
+        "z": "e3265d27.008ee",
+        "name": "TDS",
+        "group": "bb465471.f59478",
+        "order": 9,
+        "width": 6,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "Waiting for TDS...",
+        "dot": false,
+        "ymin": "100",
+        "ymax": "500",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#72d2df",
+            "#5bc87b",
+            "#ff8f2e",
+            "#72d2df",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 550,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10d644e7.b29dcb",
+        "type": "ui_chart",
+        "z": "e3265d27.008ee",
+        "name": "Medium temperature",
+        "group": "bb465471.f59478",
+        "order": 1,
+        "width": 6,
+        "height": 3,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "60",
+        "ymax": "70",
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#5ac67a",
+            "#5a70c6",
+            "#ffffff",
+            "#72d2df",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 600,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3d3a0be.176c7",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "bb465471.f59478",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "name": "Medium Last Value",
+        "label": "Medium",
+        "format": "{{msg.payload[0].T_med}}°",
+        "layout": "col-center",
+        "x": 370,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "857623ba.e56a",
+        "type": "ui_text",
+        "z": "e3265d27.008ee",
+        "group": "c6a15bd1.abdaf8",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "Last Update",
+        "label": "Last Update:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 670,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "1c3e7f1.19de581",
+        "type": "moment",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "topic": "",
+        "input": "payload[0].timestamp",
+        "inputType": "msg",
+        "inTz": "ETC/UTC",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "MMM-DD h:mm a",
+        "locale": "en",
+        "output": "payload",
+        "outputType": "msg",
+        "outTz": "America/New_York",
+        "x": 380,
+        "y": 400,
+        "wires": [
+            [
+                "857623ba.e56a"
+            ]
+        ]
+    },
+    {
+        "id": "f5162366.be4be",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload[0].pH >= 5.5 and msg.payload[0].pH <= 6.5",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "4a1e5d42.876b54"
+            ]
+        ]
+    },
+    {
+        "id": "74a6a752.c41ca8",
+        "type": "link in",
+        "z": "e3265d27.008ee",
+        "name": "DB to LEDs in",
+        "links": [
+            "4ef55ca2.879f64"
+        ],
+        "x": 155,
+        "y": 500,
+        "wires": [
+            [
+                "f5162366.be4be",
+                "a3cef494.4df288",
+                "bf33c790.0aa458",
+                "336c221b.c9b42e",
+                "1c3e7f1.19de581",
+                "e3d3a0be.176c7",
+                "85c039a9.f7b5f8",
+                "b6842ccf.0651c8",
+                "b572c03b.4b4c6",
+                "c40cf84d.988178",
+                "e259c8dd.1b2ab8",
+                "5da03f5c.bb586",
+                "566a2e1c.1167f",
+                "f46efe73.8a522",
+                "64b7108.3e7aaf",
+                "8342d7b0.699b78",
+                "fd6c7cca.0c057"
+            ]
+        ]
+    },
+    {
+        "id": "a3cef494.4df288",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload[0].T_med >= 60 and msg.payload[0].T_med <= 70",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "3cb7b2b7.5ad32e"
+            ]
+        ]
+    },
+    {
+        "id": "bf33c790.0aa458",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload[0].TDS >= 250",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 520,
+        "wires": [
+            [
+                "66cd817f.1a821"
+            ]
+        ]
+    },
+    {
+        "id": "336c221b.c9b42e",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload[0].VPD >= 0.4 and msg.payload[0].VPD <= 0.9",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "97601033.5a07"
+            ]
+        ]
+    },
+    {
+        "id": "75daeee7.71da",
+        "type": "inject",
+        "z": "e3265d27.008ee",
+        "name": "Reset charts",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "jsonata",
+        "x": 370,
+        "y": 1160,
+        "wires": [
+            [
+                "cd934769.0d36f8",
+                "e5963a4e.3cc7c8",
+                "26a674af.cca234",
+                "82522b7a.a471a8",
+                "10d644e7.b29dcb"
+            ]
+        ]
+    },
+    {
+        "id": "5da03f5c.bb586",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "T_med",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].T_med",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 920,
+        "wires": [
+            [
+                "10d644e7.b29dcb"
+            ]
+        ]
+    },
+    {
+        "id": "566a2e1c.1167f",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "pH",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].pH",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 960,
+        "wires": [
+            [
+                "82522b7a.a471a8"
+            ]
+        ]
+    },
+    {
+        "id": "f46efe73.8a522",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "TDS",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].TDS",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1000,
+        "wires": [
+            [
+                "26a674af.cca234"
+            ]
+        ]
+    },
+    {
+        "id": "64b7108.3e7aaf",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "T_air",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].T_air",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1040,
+        "wires": [
+            [
+                "e5963a4e.3cc7c8"
+            ]
+        ]
+    },
+    {
+        "id": "8342d7b0.699b78",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "RH",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].RH",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1080,
+        "wires": [
+            [
+                "e5963a4e.3cc7c8"
+            ]
+        ]
+    },
+    {
+        "id": "fd6c7cca.0c057",
+        "type": "change",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "VPD",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].VPD",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1120,
+        "wires": [
+            [
+                "cd934769.0d36f8"
+            ]
+        ]
+    },
+    {
+        "id": "adbd0ab7.b62968",
+        "type": "exec",
+        "z": "e3265d27.008ee",
+        "command": "ssh pi@192.168.1.5 'python3 ~/read_async.py'",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 600,
+        "y": 160,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f899ba23.a0bf28",
+        "type": "ui_button",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "group": "c6a15bd1.abdaf8",
+        "order": 6,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Update",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "adbd0ab7.b62968"
+            ]
+        ]
+    },
+    {
+        "id": "94649a80.5af2b8",
+        "type": "template",
+        "z": "e3265d27.008ee",
+        "name": "HTML wrapper",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"100%\" height=\"100%\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 360,
+        "y": 1200,
+        "wires": [
+            [
+                "4a6e4623.e8c978"
+            ]
+        ]
+    },
+    {
+        "id": "4a6e4623.e8c978",
+        "type": "ui_template",
+        "z": "e3265d27.008ee",
+        "group": "e367dfc0.b356e",
+        "name": "dashboard viewer",
+        "order": 1,
+        "width": 8,
+        "height": 6,
+        "format": "<a href=\"http://192.168.1.104:1880/{{msg.file}}\" target=\"_blank\"><div ng-bind-html=\"msg.payload\"></div></a>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 590,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5de09908.7673f8",
+        "type": "link in",
+        "z": "e3265d27.008ee",
+        "name": "Image to Dashboard in",
+        "links": [
+            "4c29cd96.7c8d04",
+            "2f512d3b.36d2a2",
+            "3129c09c.03b27"
+        ],
+        "x": 155,
+        "y": 1200,
+        "wires": [
+            [
+                "94649a80.5af2b8"
+            ]
+        ]
+    },
+    {
+        "id": "42f8c7be.eea768",
+        "type": "ui_button",
+        "z": "e3265d27.008ee",
+        "name": "Light",
+        "group": "c6a15bd1.abdaf8",
+        "order": 7,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "fa-lightbulb-o",
+        "payload": "toggle",
+        "payloadType": "str",
+        "topic": "",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "d551e8db.1b1628"
+            ]
+        ]
+    },
+    {
+        "id": "d551e8db.1b1628",
+        "type": "kasa",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "device": "192.168.1.109",
+        "interval": 60000,
+        "eventInterval": 15000,
+        "payload": "getInfo",
+        "payloadType": "info",
+        "debug": false,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3cb7b2b7.5ad32e",
+        "type": "trigger",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "op1": "",
+        "op2": "off",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "44c1ef27.63fd9"
+            ]
+        ]
+    },
+    {
+        "id": "e8d565d1.604058",
+        "type": "trigger",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "op1": "",
+        "op2": "off",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 550,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66cd817f.1a821",
+        "type": "trigger",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "op1": "",
+        "op2": "off",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "decf264b.359b58"
+            ]
+        ]
+    },
+    {
+        "id": "97601033.5a07",
+        "type": "trigger",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "op1": "",
+        "op2": "off",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 550,
+        "y": 560,
+        "wires": [
+            [
+                "6ce2cb46.5c5854"
+            ]
+        ]
+    },
+    {
+        "id": "4159ee1e.bfd8b",
+        "type": "exec",
+        "z": "e3265d27.008ee",
+        "command": "ssh pi@192.168.1.103 'python3 ~/picture.py --width 1600 --height 1200 --rotation 90'",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "",
+        "x": 710,
+        "y": 280,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "bf24c064.504fc",
+        "type": "ui_button",
+        "z": "e3265d27.008ee",
+        "name": "Camera",
+        "group": "c6a15bd1.abdaf8",
+        "order": 8,
+        "width": 1,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "darkred",
+        "icon": "fa-camera",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "4159ee1e.bfd8b"
+            ]
+        ]
+    },
+    {
+        "id": "f4b9cd8e.85dd2",
+        "type": "inject",
+        "z": "e3265d27.008ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 5-22 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "4159ee1e.bfd8b"
+            ]
+        ]
+    },
+    {
+        "id": "229b7b5.301e384",
+        "type": "ui_group",
+        "name": "Air",
+        "tab": "7ba802ac.39528c",
+        "order": 3,
+        "disp": false,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "bb465471.f59478",
+        "type": "ui_group",
+        "name": "Medium",
+        "tab": "7ba802ac.39528c",
+        "order": 2,
+        "disp": false,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "c6a15bd1.abdaf8",
+        "type": "ui_group",
+        "name": "Status",
+        "tab": "7ba802ac.39528c",
+        "order": 1,
+        "disp": false,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "e367dfc0.b356e",
+        "type": "ui_group",
+        "name": "Latest Picture",
+        "tab": "7ba802ac.39528c",
+        "order": 4,
+        "disp": false,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "7ba802ac.39528c",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "fa-leaf",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

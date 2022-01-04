@@ -1,0 +1,323 @@
+[
+    {
+        "id": "9399cd47.365ae",
+        "type": "sqlite",
+        "z": "151617d.37e22e8",
+        "mydb": "9f124278.952c",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "",
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "423aabde.cc7574"
+            ]
+        ]
+    },
+    {
+        "id": "4eebe156.0fd2",
+        "type": "inject",
+        "z": "151617d.37e22e8",
+        "name": "CREATE TABLE",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "CREATE TABLE readings (timestamp INTEGER, pH NUMERIC, TDS INTEGER, T_med INTEGER, T_air INTEGER, RH INTEGER, VPD NUMERIC)",
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "9399cd47.365ae"
+            ]
+        ]
+    },
+    {
+        "id": "870ecfcd.54c78",
+        "type": "inject",
+        "z": "151617d.37e22e8",
+        "name": "SELECT last row only",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "913cb16b.8357a"
+            ]
+        ]
+    },
+    {
+        "id": "4b9be5eb.acdefc",
+        "type": "inject",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "DROP TABLE readings",
+        "x": 280,
+        "y": 440,
+        "wires": [
+            [
+                "9399cd47.365ae"
+            ]
+        ]
+    },
+    {
+        "id": "d2223496.2b2818",
+        "type": "link in",
+        "z": "151617d.37e22e8",
+        "name": "MQTT to DB in",
+        "links": [
+            "e9157ee5.6fa73"
+        ],
+        "x": 215,
+        "y": 80,
+        "wires": [
+            [
+                "63da7ba9.150d54"
+            ]
+        ]
+    },
+    {
+        "id": "63da7ba9.150d54",
+        "type": "sqlite",
+        "z": "151617d.37e22e8",
+        "mydb": "9f124278.952c",
+        "sqlquery": "prepared",
+        "sql": "INSERT INTO readings (timestamp, pH, TDS, T_med, T_air, RH, VPD) VALUES ($time, $pH, $TDS, $T_med, $T_air, $RH, $VPD)",
+        "name": "",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "913cb16b.8357a"
+            ]
+        ]
+    },
+    {
+        "id": "4ef55ca2.879f64",
+        "type": "link out",
+        "z": "151617d.37e22e8",
+        "name": "DB to LEDs out",
+        "links": [
+            "74a6a752.c41ca8"
+        ],
+        "x": 955,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "37b88978.49f366",
+        "type": "inject",
+        "z": "151617d.37e22e8",
+        "name": "Backfill charts",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM readings WHERE datetime(timestamp/1000, 'unixepoch', 'localtime') >= datetime('now', 'localtime', '-8 hours') ORDER BY timestamp ASC",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "b7f5d927.3ca918"
+            ]
+        ]
+    },
+    {
+        "id": "b1897b14.c19d18",
+        "type": "split",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "payload[0]",
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "9506ff2e.9524c"
+            ]
+        ]
+    },
+    {
+        "id": "9506ff2e.9524c",
+        "type": "change",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 320,
+        "wires": [
+            [
+                "1228d893.a5a7a7"
+            ]
+        ]
+    },
+    {
+        "id": "b7f5d927.3ca918",
+        "type": "sqlite",
+        "z": "151617d.37e22e8",
+        "mydb": "9f124278.952c",
+        "sqlquery": "msg.topic",
+        "sql": "CREATE TABLE pH (timestamp INTEGER, value NUMERIC);\nCREATE TABLE tds (timestamp INTEGER, value NUMERIC);",
+        "name": "",
+        "x": 480,
+        "y": 320,
+        "wires": [
+            [
+                "b1897b14.c19d18"
+            ]
+        ]
+    },
+    {
+        "id": "913cb16b.8357a",
+        "type": "change",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT * FROM readings ORDER BY timestamp DESC LIMIT 1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "2161c8d3.af8fb8"
+            ]
+        ]
+    },
+    {
+        "id": "2161c8d3.af8fb8",
+        "type": "sqlite",
+        "z": "151617d.37e22e8",
+        "mydb": "9f124278.952c",
+        "sqlquery": "msg.topic",
+        "sql": "CREATE TABLE pH (timestamp INTEGER, value NUMERIC);\nCREATE TABLE tds (timestamp INTEGER, value NUMERIC);",
+        "name": "",
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "1228d893.a5a7a7"
+            ]
+        ]
+    },
+    {
+        "id": "1228d893.a5a7a7",
+        "type": "change",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "payload[0].timestamp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 830,
+        "y": 80,
+        "wires": [
+            [
+                "4ef55ca2.879f64"
+            ]
+        ]
+    },
+    {
+        "id": "7c6bef18.c0a84",
+        "type": "comment",
+        "z": "151617d.37e22e8",
+        "name": "For dev/debug",
+        "info": "",
+        "x": 310,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "423aabde.cc7574",
+        "type": "debug",
+        "z": "151617d.37e22e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "9f124278.952c",
+        "type": "sqlitedb",
+        "db": "nov2021",
+        "mode": "RWC"
+    }
+]
